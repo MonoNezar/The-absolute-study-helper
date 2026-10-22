@@ -1,0 +1,45 @@
+
+<html>
+  <head>
+    <title>The Absolute Study Helper</title>
+  </head>
+  <body>
+    <h1 class="title">Study Helper for real</h1>
+    <input id="box" placeholder="Choose your subject..." type="text" />
+    <button onclick="search()">Search</button>
+    <p id="results"></p>
+
+    <script>
+      const concepts = {
+        "math": "I am not sure what to write here in math as this would take a lot and a lot of space but I really care about this subject yet sometimes I find it difficult to deal with, For this will be my note taking project where I write my notes here and program them into this HTML file/ Terra project so  I can recheck my digital notes",
+        "mechanics": "MECHANICS PLACE HOLDER",
+        "chemistry": "CHEMISTRY PLACE HOLDER",
+        "physics": "Physics in grade 12 is more conceptual than math so I guess it will fine, I hope. I will try and add images of the physical notes that i took and even digital to this page ",
+        "biology": "Sorry I dont study Biology haha",
+        "geology": "Not Sorry, I dont study Geology haha",
+
+      };
+      function search() {
+        const typed = document.getElementById("box").value.toLowerCase();
+        const answer = concepts[typed];
+
+        if (answer) {
+          document.getElementById("results").innerHTML = answer;
+        } else {
+          document.getElementById("results").innerHTML = "Try writing again.";
+        }
+      }
+    </script>
+    <p><mark> Try searching for subjects like</mark></p>
+    <ul>
+      <li>Math</li>
+      <li>Mechanics</li>
+      <li>Chemistry</li>
+      <li>Physics</li>
+    </ul>
+    <p>Place Holder</p>
+    <p>Place Holder</p>
+    <p>text is here for some reason</p>
+    <p><small>Hi this is a fun project made by Mono nezar</small></p>
+  </body>
+  
