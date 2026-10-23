@@ -2,31 +2,68 @@
 <html>
   <head>
     <title>The Absolute Study Helper</title>
+    <style>
+      #results img {
+        max-width: 400px;
+        display: block;
+        margin-top: 10px;
+        border-radius: 6px;
+      }
+    </style>
   </head>
+  <p>THIS IS NOT A SCHOOL PROJECT, IT IS A PROJECT MADE TO HELP WITH STUDYING</p>
   <body>
     <h1 class="title">Study Helper for real</h1>
     <input id="box" placeholder="Choose your subject..." type="text" />
     <button onclick="search()">Search</button>
-    <p id="results"></p>
+    <div id="results"></div>
 
     <script>
       const concepts = {
-        "math": "I am not sure what to write here in math as this would take a lot and a lot of space but I really care about this subject yet sometimes I find it difficult to deal with, For this will be my note taking project where I write my notes here and program them into this HTML file/ Terra project so  I can recheck my digital notes",
-        "mechanics": "MECHANICS PLACE HOLDER",
-        "chemistry": "CHEMISTRY PLACE HOLDER",
-        "physics": "Physics in grade 12 is more conceptual than math so I guess it will fine, I hope. I will try and add images of the physical notes that i took and even digital to this page ",
-        "biology": "Sorry I dont study Biology haha",
-        "geology": "Not Sorry, I dont study Geology haha",
+        "math": [
+          { type: "text", content: "I am not sure what to write here in math as this would take a lot and a lot of space but I really care about this subject yet sometimes I find it difficult to deal with, For this will be my note taking project where I write my notes here and program them into this HTML file/ Terra project so  I can recheck my digital notes" },
+          { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/photo_2025-01-06_22-53-24.jpg" }
+        ],
+        "mechanics": [
+          { type: "text", content: "MECHANICS PLACE HOLDER" },
+          { type: "image", content: "mechanicsnotes.png" }
+        ],
+        "chemistry": [
+          { type: "text", content: "CHEMISTRY PLACE HOLDER" },
+          { type: "image", content: "chemistrynotes.png" }
+        ],
+        "physics": [
+          { type: "text", content: "Physics in grade 12 is more conceptual than math so I guess it will fine, I hope. I will try and add images of the physical notes that i took and even digital to this page " },
+          { type: "image", content: "physicsnotes.png" }
+        ],
+        "biology": [  
+          { type: "text", content: "Sorry I dont study Biology haha" },
+          { type: "image", content: "biologynotes.png" }
+        ],
+        "geology": [  
+          { type: "text", content: "Not Sorry, I dont study Geology haha" },
+          { type: "image", content: "geologynotes.png" }
+        ] 
 
       };
       function search() {
         const typed = document.getElementById("box").value.toLowerCase();
-        const answer = concepts[typed];
+        const contentList = concepts[typed];
+        const resultsDiv = document.getElementById("results");
 
-        if (answer) {
-          document.getElementById("results").innerHTML = answer;
+        if (contentList) {
+          let htmlContent = "";
+
+          contentList.forEach(item => {
+            if (item.type === "text") {
+              htmlContent += `<p>${item.content}</p>`;
+            } else if (item.type === "image") {
+              htmlContent += `<img src="${item.content}" alt="Note Image">`;
+            }
+          })
+          resultsDiv.innerHTML = `<p>${htmlContent}</p>`;
         } else {
-          document.getElementById("results").innerHTML = "Try writing again.";
+          resultsDiv.innerHTML = "Try writing again.";
         }
       }
     </script>
@@ -42,6 +79,8 @@
     <p>text is here for some reason</p>
     <p><small>Hi this is a fun project made by Mono nezar, Scientists have revealed the   </small><b>HI</b></p>
     <br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <p><small>It occured to me that I should explain what is this with some more detail, well I am making this project for the HackClub Program Terra That I want to participate in, for now I am using my experience with HTML and even building on it to make this project where I make a study helper, a webpage where you can check notes made for each subject that I studied</small></p>
+    <p><small>It occured to me that I should explain what is this with some more detail, well I am making this project for the HackClub Program Terra That I want to participate in, for now I am using my experience with HTML and even building on it to make this project where I make a study helper, a webpage where you can check notes made for each subject that I studied
+      gonna try and add images and some fancy CSS too
+    </small></p>
   </body>
   
