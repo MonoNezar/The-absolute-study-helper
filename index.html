@@ -3,7 +3,7 @@
   <head>
     <title>Study Helper by Mono Nezar</title>
     <style>
-       p:not(:empty), h1, ul, input {background-color: #ffffff;
+       p:not(:empty), ul {background-color: #ffffff;
         border: 2px solid #e0e0e0;
         border-radius: 12px;
         padding: 20px;
@@ -11,6 +11,30 @@
         max-width: 600px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.8);
       }
+      img {
+        width: 300px;
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        display: block;
+        margin: 15px auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        padding: 25px;
+        background-color: #ffffff;
+
+      }
+      .searching-bar, h1 {
+        background-color: #ffffff;
+         height: auto;
+        border-radius: 6px;
+        display: block;
+        margin: 15px auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        padding: 25px;
+        max-width: 400px; 
+
+      }
+      
      
     </style>
     <style>
@@ -52,29 +76,41 @@
   <p>THIS IS NOT A SCHOOL PROJECT, IT IS A PROJECT MADE TO HELP WITH STUDYING</p>
   <body>
     <h1 class="title">Study Helper for real</h1>
+    <div class="searching-bar">
     <input id="box" placeholder="Choose your subject..." type="text" />
     <button onclick="search()">Search</button>
+    </div>
     <div id="results"></div>
 
     <script>
       const concepts = {
         "math": [
           { type: "text", content: "I am not sure what to write here in math as this would take a lot and a lot of space but I really care about this subject yet sometimes I find it difficult to deal with, For this will be my note taking project where I write my notes here and program them into this HTML file/ Terra project so  I can recheck my digital notes" },
-          { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/photo_2025-01-06_22-53-24.jpg" }
+          { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/photo_2025-01-06_22-53-24.jpg" },
+          { type: "text", content: "In math I am studying Calculus in depth kinda, like calclus 2. and also algebra ofc. So calclus has derivatives and integrals. at first they may seem hard but once you understand them they get very easy. Firstly you must know what a rate of change is, try to imagine graphs. for example x^2 looks like a U shape and f(x)=x looks like a diagonal line. Now if you take the derivative of x^2 you get 2x, which is a diagonal line, and if you take the derivative of f(x)=x you get 1, which is a horizontal line. So the derivative is the rate of change of a function. The integral is the opposite of the derivative, it is the area under the curve. So if you take the integral of 2x you get x^2, and if you take the integral of 1 you get x. So the integral is the area under the curve."},
+          {type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/material-asjhCFvs.png"},
+          {type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/identity.webp"},
+          { type: "text", content: "Now that you know how graphs look like. Dervative of the function is the slope of the function at a given point, but we can also use defrentiaion to get the function of the slope which means if we use a specific value in the domain of x in the function we got it will give us the slope of the original function at that point exactly. The power rule: it is a very simple yet crucial thing that you need to solve derivatives at the moment, it states that if y=x^n the y'=nx^n-1. so if f(x)=x^2, f'(x)=2x^1."}
         ],
         "mechanics": [
-          { type: "text", content: "MECHANICS PLACE HOLDER" },
-          { type: "image", content: "mechanicsnotes.png" }
+          { type: "text", content: "Mechanics is a really beloved subject by me; as it is straight up physics but with skewed towards math more than concepts" },
+          { type: "image", content: "mechanicsnotes.png" },
+          { type: "text", content: "I studied concepts like vector, tourqe, etc etc. Lets begin with resultant of forces, basically it is the sum of all forces acting on an object with a direction, if an object has a forces acting on it like 2N north and 3N south, now the resultant of the forces will equal to 1N south, as they are in opposite direction, if they were in the same direction it would be 5N north/South depending on which direction they are equal on. Now if the forces were acting on the object at an angle then the resultant will equal root(2^2+3^2) and the angle will equal tan^-1(3/2) which is the angle of the resultant with respect to the horizontal Axis."},
+          { type: "image", content: "Resultant of forces.png"}
         ],
         "chemistry": [
-          { type: "text", content: "CHEMISTRY PLACE HOLDER" },
+          { type: "text", content: "Chemistry this grade is straight up Grade 10 and 11 combined with more in the organic chemistry area" },
           { type: "image", content: "chemistrynotes.png" },
-          {type: "text", content: "uhhhh Maybe chemistry isn't so bad after all..." }
+          { type: "text", content: "uhhhh Maybe chemistry isn't so bad after all..." },
+          { type: "text", content: "stoichiometry, I dont really remember the definition but we use it calculate the amount of moles/volume/mass of molecules needed or resulted by a chemical reaction, for example in 2C6H6 + 15O2 ➡️ 12CO2 + 6H2O, the ratio between moles of benzene and carbon dioxide is 1:6, now in questions they will give you the pressure and the temperature, so we use the law PV=nRT, where P is the pressure in atm, V is the volume in liters, n is the number if moles in a substance, R is a constant that equals = 0.082, T is the temperature in Kelvin"},
+          { type: "text", contentl: "PS: dont confuse Stoichiometry with chemical equation balancing as these two might seem similar but they are different things"}
+
         ],
         "physics": [
           { type: "text", content: "Physics in grade 12 is more conceptual than math so I guess it will fine, I hope. I will try and add images of the physical notes that i took and even digital to this page " },
           { type: "image", content: "physicsnotes.png" },
-          { type : "text", content: "I kinda started this year roughly, even though I love physics I am trying my best to catch up and get the engine going. hoping the best to be honest"}
+          { type: "text", content: "In physics there this concept about mirrors, reflection, Lenses, refraction. We have conacave and convex mirrors and also concave and convex lenses, where mirrors reflect light and make can make an image, lenses refract light."},
+          { type: "text", content: "There is also the concpet of wireless communication like with AM and FM radio waves, and also fiber optics etc..."}
         ],
         "biology": [  
           { type: "text", content: "Sorry I dont study Biology haha" },
@@ -83,7 +119,11 @@
         "geology": [  
           { type: "text", content: "Not Sorry, I dont study Geology haha" },
           { type: "image", content: "geologynotes.png" }
-        ] 
+        ],
+        "hidden": [
+          { type: "text", content: "HOW DID YOU FIND THIS?????"},
+          { type: "image", content: "HIDDEN.png"}
+        ]
 
       };
       function search() {
@@ -98,7 +138,7 @@
             if (item.type === "text") {
               htmlContent += `<p>${item.content}</p>`;
             } else if (item.type === "image") {
-              htmlContent += `<img src="${item.content}" alt="Note Image">`;
+              htmlContent += `<img src="${item.content}" alt="Image">`;
             }
           })
           resultsDiv.innerHTML = `<p>${htmlContent}</p>`;
@@ -115,19 +155,22 @@
     </script>
     <p><mark> Try searching for subjects like</mark></p>
     <ul>
-      <li>Math</li>
-      <li>Mechanics</li>
-      <li>Chemistry</li>
-      <li>Physics</li>
+      <li>Math ✖️➕➖➗🟰</li>
+      <li>Mechanics 🦾🦿</li>
+      <li>Chemistry ⚗️🧪🔬</li>
+      <li>Physics 🧑‍🔬🍎🔭</li>
     </ul>
-    <p>A cool Place Holder</p>
+    <p>A cool Place Holder🧊🧊🧊</p>
     <p>A not so cool Place Holder</p>
     <p>text is here for some reason</p>
     <p><small>Hi this is a fun project made by Mono nezar, Scientists have revealed the   </small><b>HI</b></p>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <img src="https://s.yimg.com/lo/mysterio/api/aa73cb40a6419f1cb2dc2d40f62799feb50b9e4f447c186dfdbf57a15c4b874e/lightyear_networkapi/resizefill_w960%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2F4e43626097ba78ca1322d518f3938cde.jpg">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <p><small>It occured to me that I should explain what is this with some more detail, well I am making this project for the HackClub Program Terra That I want to participate in, for now I am using my experience with HTML and even building on it to make this project where I make a study helper, a webpage where you can check notes made for each subject that I studied
       gonna try and add images and some fancy CSS too
       Managed to add images gonna add CSS soon haha....
+
+      you know what, try searching for things like (biology, Geology, HIDDEN)
     </small></p>
   </body>
   
