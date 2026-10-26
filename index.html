@@ -3,8 +3,70 @@
   <head>
     <title>Study Helper by Mono Nezar</title>
     <style>
-       p:not(:empty), ul {background-color: #ffffff;
-        border: 2px solid #e0e0e0;
+      :root {
+      --bg-color: #f4f6f8;
+      --card-bg: #ffffff;
+      --text-color: #1e293b;
+      --border-color: #e2e8f0;
+      --nav-bg: #ffffff;
+      --btn-bg: #4f46e5;
+      --btn-text: #ffffff;
+       }
+       
+      body.dark-mode  {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --text-color:#f8fafc;
+        --border-color: #334155;
+        --nav-bg: #1e293b;
+        --btn-bg: #6366f1;
+        --btn-text: #ffffff;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding:  0;
+        transition: background-color 0.3s, color 0.3s;
+
+      }
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--nav-bg);
+        padding: 15px 30px;
+        border-bottom: 2px solid var(--border-color);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+      .nav-logo{
+        font-size: 20px;
+        font-weight: bold;
+      }
+       
+      #theme-toggle {
+        padding: 8px 16px;
+        background-color: var(--card-bg);
+        color:var(--text-color);  
+        border: 2px solid var(--border-color);
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s;
+      }
+      .main-content {
+        max-width: 700px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+       
+       
+       p:not(:empty), ul {background-color: var(--card-bg);
+        border: 2px solid var(--border-color);
         border-radius: 12px;
         padding: 20px;
         margin-top: 20px;
@@ -20,11 +82,11 @@
         margin: 15px auto;
         box-shadow: 0 4px 10px rgba(0,0,0,0.8);
         padding: 25px;
-        background-color: #ffffff;
+        background-color:var(--card-bg);
 
       }
       .searching-bar, h1 {
-        background-color: #ffffff;
+        background-color: var(--card-bg);
          height: auto;
         border-radius: 6px;
         display: block;
@@ -32,15 +94,13 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.8);
         padding: 25px;
         max-width: 400px; 
+        border: 2px solid var(--border-color);
 
       }
-      
-     
-    </style>
-    <style>
+
       #results:not(:empty) {
-        background-color: #ffffff;
-        border: 2px solid #e0e0e0;
+        background-color: var(--card-bg);
+        border: 2px solid var(--border-color);
         border-radius: 12px;
         padding: 20px;
         margin-top: 20px;
@@ -53,15 +113,113 @@
         margin: 15px auto;
         border-radius: 6px;
       }
-  
-    </style>
-    <style>
-      #results img {
-        max-width: 400px;
-        display: block;
-        margin-top: 10px;
-        border-radius: 6px;
+      .timer {
+        background-color: var(--bg-color);
+        border: 2px soild var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 600px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
+      #timer-display {
+        font-size: 48px;
+        font-weight: bold;
+        margin: 15px 0;
+        letter-spacing: 2px;
+      }
+      .timer-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .timer-controls button {
+        padding: 8px 16px;
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .timer-controls button:hover {
+        opacity: 0.9;
+      }
+      .subject-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 15px 0;
+      }
+      .subject-chips button, a {
+        padding: 8px 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border: 2px solid var(--border-color);
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14;
+        transition: all 0.2s; 
+      }
+      .subject-chips button:hover, a:hover {
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+        border-color: var(--btn-bg);
+        transform: translateY(-2px);
+      }
+      .checklist-card {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subject-checklist {
+  margin-top: 15px;
+}
+
+.subject-checklist h3 {
+  margin: 10px 0 5px 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  font-size: 18px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 6px;
+  background-color: var(--bg-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 15px;
+}
+
+.check-item:hover {
+  opacity: 0.9;
+}
+
+.check-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Strikethrough text when checked */
+.check-item input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+  
     </style>
     <style>
       body {
@@ -69,19 +227,93 @@
     radial-gradient(#ffffff 20%, transparent 21%) 0 0,
     radial-gradient(#ffffff 20%, transparent 21%) 25px 25px;
   background-size: 50px 50px;
-  background-color: #fec16c;
+  background-color:var(--card-bg);
 }
     </style>
-  </head>
-  <h2> 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 </h2>
+    </head>
   <body>
-    <h1 class="title">Study Helper for real</h1>
-    <div class="searching-bar">
+    <nav class="navbar">
+      <div class="nav-logo">StudyHelper</div>
+      <div class="nav-links">
+        <a href="#home-section">Home</a>
+        <a href="#search-section">Search</a>
+      </div>
+      <div class="nav-right">
+        <button id="theme-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+      </div>
+    </nav>
+
+     <div class="main-content">
+      <div id="home-section">
+          <h2> 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 𝓔𝔁𝓽𝓻𝓮𝓶𝓮𝓵𝔂 𝓒𝓸𝓸𝓵 𝓢𝓽𝓾𝓭𝔂 𝓗𝓮𝓵𝓹𝓮𝓻 </h2>
+           <h1 class="title">Study Helper for real</h1> 
+      </div>
+
+    <div id="search-section" class="searching-bar">
     <input id="box" placeholder="Choose your subject..." type="text" />
     <button onclick="search()">Search</button>
     </div>
+    <div class="subject-chips">
+      <button onclick="quicksearch('math')">Math</button>
+      <button onclick="quicksearch('physics')">Physics</button>
+      <button onclick="quicksearch('mechanics')">Mechanics</button>
+      <button onclick="quicksearch('chemistry')">Chemistry</button>
+    </div>
+    <div class="checklist-card">
+      <h2>Subjecr Progress Tracker</h2>
+      <div class="subject-checklist">
+        <h3>Math</h3>
+        <label class="check-item"><input type="checkbox" id="math-1" onchange="saveChecklist()">Graphs and Functions</label>
+        <label class="check-item"> <input type="checkbox" id="math-2" onchange="saveChecklist()">defrentiaion and power rule</label>
+      </div>
+      <div class="subject-checklist">
+        <h3>Physics</h3>
+        <label class="check-item"><input type="checkbox" id="physics-1" onchange="saveChecklist()">Physics study</label>
+      </div>
+      <div class="subject-checklist">
+        <h3>Chemistry</h3>
+        <label class="check-item"><input type="checkbox" id="chemistry-1" onchange="saveChecklist()">Chemistry study</label>
+    </div>
+    <div class="subject-checklist">
+        <h3>Mechanics</h3>
+        <label class="check-item"><input type="checkbox" id="mechanics-1" onchange="saveChecklist()">Mechanics study</label>
+      </div>
+    <div class="timer">
+      <h2> Study Focus Timer</h2>
+      <div id="timer-display">25:00</div>
+      <div class="timer-controls">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+
     <div id="results"></div>
 
+    <p><mark> Try searching for subjects like</mark></p>
+    <ul>
+      <li>Math ✖️➕➖➗🟰</li>
+      <li>Mechanics 🦾🦿</li>
+      <li>Chemistry ⚗️🧪🔬</li>
+      <li>Physics 🧑‍🔬🍎🔭</li>
+    </ul>
+    <p>A cool Place Holder🧊🧊🧊</p>
+    <p>A not so cool Place Holder</p>
+    <p>text is here for some reason</p>
+    <p><small>Hi this is a fun project made by Mono nezar, Scientists have revealed the   </small><b>HI</b></p>
+    <img src="https://s.yimg.com/lo/mysterio/api/aa73cb40a6419f1cb2dc2d40f62799feb50b9e4f447c186dfdbf57a15c4b874e/lightyear_networkapi/resizefill_w960%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2F4e43626097ba78ca1322d518f3938cde.jpg">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <p><small>It occured to me that I should explain what is this with some more detail, well I am making this project for the HackClub Program Terra That I want to participate in, for now I am using my experience with HTML and even building on it to make this project where I make a study helper, a webpage where you can check notes made for each subject that I studied
+      gonna try and add images and some fancy CSS too
+      Managed to add images gonna add CSS soon haha......
+
+      you know what, try searching for things like (biology, Geology, HIDDEN)
+      This project made me learn many new things tbh but it also took too much time and effort I hope you liked it, make sure to check for all features in the page..
+      Also enjoy some fan art haha.. I gave it some work
+    </small></p>
+    <img src="https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/fanart.png">
+     </div>
+    
     <script>
       const concepts = {
         "math": [
@@ -92,7 +324,8 @@
           { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/identity.webp"},
           { type: "text", content: "Now that you know how graphs look like... Dervative of the function is the slope of the function at a given point, but we can also use defrentiaion to get the function of the slope which means if we use a specific value in the domain of x in the function we got it will give us the slope of the original function at that point exactly. The power rule: it is a very simple yet crucial thing that you need to solve derivatives at the moment, it states that if y=x^n the y'=nx^n-1. so if f(x)=x², f'(x)=2x^1."},
           { type: "text", content: "CALCULUS IS FUN"},
-          { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/ddx%20.png"}
+          { type: "image", content: "https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/ddx%20.png"},
+          { type: "text", content: "Statistics: a population is an Entire group, a smaple is a part of the population, a Parameter is a number describing a charactrastic of the population while a statistic is a number that describes a charactrastic about a sample... Pie chart and Column chart can be used to show qualitative data, Histogram and Dot Plot and stem&leaf plot can be used to show quantative data... to describe quantative data distribution we can use shape: symmetric, left/right skewed,uniform, bi-modal,, center: mean-medium-mode,, Variability(spread):- Range, Interquartile, Variance, Stamdard Deviation.. So  mode is the highest value/ most frequent score, median devides the graph to 50% 50%, mean is the avreage of all numbers, middle score in tue distribution"}
 
         ],
         "mechanics": [
@@ -124,11 +357,13 @@
         ],
         "biology": [  
           { type: "text", content: "Sorry I dont study Biology haha, I kinda miss biology tbh" },
-          { type: "image", content: "biologynotes.png" }
+          { type: "text", content: "there is no image here"}
+          
         ],
         "geology": [  
           { type: "text", content: "Not Sorry, I dont study Geology haha, I kinda miss geology too" },
-          { type: "image", content: "geologynotes.png" }
+          { type: "text", content: "there is no image here too haha"}
+          
         ],
         "hidden": [
           { type: "text", content: "HOW DID YOU FIND THIS?????"},
@@ -162,27 +397,85 @@
           search();
          }
         });
-    </script>
-    <p><mark> Try searching for subjects like</mark></p>
-    <ul>
-      <li>Math ✖️➕➖➗🟰</li>
-      <li>Mechanics 🦾🦿</li>
-      <li>Chemistry ⚗️🧪🔬</li>
-      <li>Physics 🧑‍🔬🍎🔭</li>
-    </ul>
-    <p>A cool Place Holder🧊🧊🧊</p>
-    <p>A not so cool Place Holder</p>
-    <p>text is here for some reason</p>
-    <p><small>Hi this is a fun project made by Mono nezar, Scientists have revealed the   </small><b>HI</b></p>
-    <img src="https://s.yimg.com/lo/mysterio/api/aa73cb40a6419f1cb2dc2d40f62799feb50b9e4f447c186dfdbf57a15c4b874e/lightyear_networkapi/resizefill_w960%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2F4e43626097ba78ca1322d518f3938cde.jpg">
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <p><small>It occured to me that I should explain what is this with some more detail, well I am making this project for the HackClub Program Terra That I want to participate in, for now I am using my experience with HTML and even building on it to make this project where I make a study helper, a webpage where you can check notes made for each subject that I studied
-      gonna try and add images and some fancy CSS too
-      Managed to add images gonna add CSS soon haha......
 
-      you know what, try searching for things like (biology, Geology, HIDDEN)
-      Also enjoy some fan art haha.. I gave it some work
-    </small></p>
-    <img src="https://raw.githubusercontent.com/MonoNezar/The-absolute-study-helper/refs/heads/main/fanart.png">
+        function toggleDarkMode() {
+          document.body.classList.toggle("dark-mode");
+          const toggleBtn = document.getElementById ("theme-toggle");
+          if (document.body.classList.contains("dark-mode")) {
+            toggleBtn.innerHTML = "Dark Mode";
+          } else {
+            toggleBtn.innerHTML = "Light Mode";
+          }  
+          
+
+        }
+        let timerInterval = null;
+        let timeLeft = 25 * 60;
+
+        function updateTimerDisplay() {
+          const minutes = Math.floor(timeLeft/60)
+          const seconds = timeLeft % 60;
+
+          document.getElementById("timer-display").innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+        function startTimer() {
+          if (timerInterval !== null) return;
+          timerInterval = setInterval(() => {
+            if (timeLeft > 0) {
+              timeLeft--;
+              updateTimerDisplay();
+
+            } else {
+              clearInterval (timerInterval);
+              timerInterval = null;
+              alert("Time Is take a break as you like");
+            }
+          }, 1000);
+        }
+        function pauseTimer() {
+          clearInterval (timerInterval);
+          timerInterval = null;
+          timerLeft = 25 * 60;
+          updateTimerDisplay();
+        }
+        function  resetTimer() {
+          clearInterval(timerInterval);
+          timerInterval =null;
+          timeLeft = 25*60;
+          updateTimerDisplay();
+        }
+        function quicksearch(subjectName) {
+          document.getElementById("box").value = subjectName;
+          search();
+        }
+        
+function saveChecklist() {
+  const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
+  const checklistState = {};
+
+  checkboxes.forEach(box => {
+    checklistState[box.id] = box.checked;
+  });
+
+  localStorage.setItem("studyChecklist", JSON.stringify(checklistState));
+}
+
+function loadChecklist() {
+  const savedState = localStorage.getItem("studyChecklist");
+  if (!savedState) return;
+
+  const checklistState = JSON.parse(savedState);
+  for (const id in checklistState) {
+    const box = document.getElementById(id);
+    if (box) {
+      box.checked = checklistState[id];
+    }
+  }
+}
+
+
+loadChecklist();
+    </script>
+    
   </body>
   
